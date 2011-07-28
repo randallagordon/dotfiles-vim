@@ -1,6 +1,5 @@
-"
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" Pathogen
+call pathogen#runtime_append_all_bundles() 
 
 " Color theme
 let g:molokai_original = 1
@@ -23,6 +22,10 @@ set mouse=a
 set autoindent
 set cursorline
 set formatoptions+=r
+
+" Status Line
+set laststatus=2
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
 
 " Write files with sudo permissions
 cmap w!! %!sudo tee > /dev/null %
