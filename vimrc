@@ -1,15 +1,27 @@
+set nocompatible
+
+" Remap key bindings for windows style copy/paste/undo/selction/etc.
+" source $VIMRUNTIME/mswin.vim
+" behave mswin
+
 " Pathogen
 call pathogen#runtime_append_all_bundles() 
 
 " Color theme
+syntax on
 let g:molokai_original = 1
 set t_Co=256
 colorscheme molokai
 
-" Remap key bindings for windows style copy/paste/undo/selction/etc.
-source $VIMRUNTIME/mswin.vim
-behave mswin
-syntax on
+" Get all sorts of fontacular across multiple platforms...
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Monospace\ 10
+  elseif has("gui_win32")
+    set guifont=Consolas:h10:cANSI
+    set lines=56 columns=220
+  endif
+endif
 
 " General stuff
 set number
@@ -23,18 +35,25 @@ set autoindent
 set cursorline
 set formatoptions+=r
 
-" Status Line
-set laststatus=2
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
+filetype plugin on
 
-" Write files with sudo permissions
-cmap w!! %!sudo tee > /dev/null %
+" Status Line Left Side
+set laststatus=2
+set statusline+=[%n]
+set statusline+=\ %<%.99f
+set statusline+=\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y
+"" Status Line Right Side
+set statusline+=%=
+set statusline+=ASCII\:\ %03.b
+set statusline+=\ %-16(\ %l,%c-%v\ %)%P
+
+" Hex editing goodness
+command Hex :%!xxd
+command Unhex :%!xxd -r
 
 " To get multiple undo working
 set cpoptions-=u
 
-" Remap functions
-map gf :tabnew <cfile><CR>
 
 " Code folding goodies
 set fdc=2
@@ -52,4 +71,18 @@ let ruby_fold=1               " Ruby
 let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
+
+let g:ragtag_global_maps=1
+
+" Super nifty mappings
+" --------------------
+" Find word under cursor in files, recursing from current directory down
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+" Open file under cursor in new tab
+map gf :tabnew <cfile><CR>
+" Make <c-u> play nice with undo
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
+" Write files with sudo permissions
+cmap w!! %!sudo tee > /dev/null %
 
