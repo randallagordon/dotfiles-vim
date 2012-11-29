@@ -85,4 +85,5 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 " Write files with sudo permissions
 cmap w!! %!sudo tee > /dev/null %
-
+" Tagbar goodness
+nmap <F8> :TagbarToggle<CR>
