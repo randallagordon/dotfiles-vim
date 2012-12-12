@@ -34,6 +34,7 @@ set mouse=a
 set autoindent
 set cursorline
 set formatoptions+=r
+set backspace=indent,eol,start
 
 filetype plugin on
 
@@ -87,3 +88,9 @@ inoremap <c-w> <c-g>u<c-w>
 cmap w!! %!sudo tee > /dev/null %
 " Tagbar goodness
 nmap <F8> :TagbarToggle<CR>
+" NERD Tree Toggle
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+" Ctrl + R search & replace of selection
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+" Toggle paste mode to play nice with PuTTY
+set pastetoggle=<F12>
