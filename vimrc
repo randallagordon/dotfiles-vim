@@ -36,7 +36,8 @@ set cursorline
 set formatoptions+=r
 set backspace=indent,eol,start
 
-filetype plugin on
+filetype off
+filetype on
 
 " Status Line Left Side
 set laststatus=2
