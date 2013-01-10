@@ -23,6 +23,11 @@ if has("gui_running")
   endif
 endif
 
+" Powerline awesomeness, if a patched font is available
+set guifont=Consolas\ for\ Powerline\ FixedD:h9
+set encoding=utf-8
+let g:Powerline_symbols="fancy"
+
 " General stuff
 set number
 set tabstop=2
@@ -56,6 +61,14 @@ command Unhex :%!xxd -r
 " To get multiple undo working
 set cpoptions-=u
 
+" Make screen/byobu happy
+if &term == "screen-bce"
+  set ttymouse=xterm2
+  imap <Up> <ESC>kj
+  imap <Down> <ESC>ki
+  imap <Right> <ESC>kl
+  imap <Left> <ESC>kh
+endif
 
 " Code folding goodies
 set fdc=2
