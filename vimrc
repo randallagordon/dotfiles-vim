@@ -13,6 +13,12 @@ let g:molokai_original = 1
 set t_Co=256
 colorscheme molokai
 
+" Highlight word under cursor
+autocmd CursorMoved * exe printf('match StatusLine /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+" Spellcheck
+setlocal spell spelllang=en_us
+
 " Get all sorts of fontacular across multiple platforms...
 if has("gui_running")
   if has("gui_gtk2")
@@ -75,10 +81,8 @@ set fdc=2
 set fdm=syntax
 nnoremap <space> za
 vnoremap <space> zf
-
 set foldlevelstart=1
 set foldnestmax=2
-
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
 let php_folding=1             " PHP
@@ -87,6 +91,10 @@ let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 
+" File Formats
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" ragtag
 let g:ragtag_global_maps=1
 
 " Super nifty mappings
