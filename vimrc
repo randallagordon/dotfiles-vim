@@ -1,8 +1,5 @@
+" Make Vim behave in a more useful way
 set nocompatible
-
-" Remap key bindings for windows style copy/paste/undo/selction/etc.
-" source $VIMRUNTIME/mswin.vim
-" behave mswin
 
 " Pathogen
 call pathogen#runtime_append_all_bundles() 
@@ -16,7 +13,7 @@ colorscheme molokai
 " Highlight word under cursor
 autocmd CursorMoved * exe printf('match StatusLine /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
-" Spellcheck
+" Spell check
 setlocal spell spelllang=en_us
 
 " Get all sorts of fontacular across multiple platforms...
@@ -47,6 +44,7 @@ set cursorline
 set formatoptions+=r
 set backspace=indent,eol,start
 
+" I forgot why this is necessary...but it is, promise!
 filetype off
 filetype on
 
@@ -64,7 +62,7 @@ set statusline+=\ %-16(\ %l,%c-%v\ %)%P
 command Hex :%!xxd
 command Unhex :%!xxd -r
 
-" To get multiple undo working
+" Get multiple undo working
 set cpoptions-=u
 
 " Make screen/byobu happy
@@ -93,14 +91,23 @@ let xml_syntax_folding=1      " XML
 
 " File Formats
 autocmd BufNewFile,BufRead *.json set ft=javascript
+" TODO: Get fancy with PEP8 for Python
+" Use flake8? https://github.com/nvie/vim-flake8
+" Or python-mode? https://github.com/klen/python-mode
+
+" listchars setup with toggle
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
+highlight NonText guifg=#4a4a59 ctermfg=236 ctermbg=NONE
+highlight SpecialKey guifg=#4a4a59 ctermfg=236 ctermbg=NONE
+
+" Super nifty mappings
+" ------------------------------------------------------------------------------
 
 " ragtag
 let g:ragtag_global_maps=1
-
-" Super nifty mappings
-" --------------------
 " Find word under cursor in files, recursing from current directory down
-map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+map <leader>f :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 " Open file under cursor in new tab
 map gf :tabnew <cfile><CR>
 " Make <c-u> play nice with undo
@@ -109,10 +116,10 @@ inoremap <c-w> <c-g>u<c-w>
 " Write files with sudo permissions
 cmap w!! %!sudo tee > /dev/null %
 " Tagbar goodness
-nmap <F8> :TagbarToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
 " NERD Tree Toggle
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 " Ctrl + R search & replace of selection
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 " Toggle paste mode to play nice with PuTTY
-set pastetoggle=<F12>
+set pastetoggle=<leader>p
