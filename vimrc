@@ -11,7 +11,7 @@ set t_Co=256
 colorscheme molokai
 
 " Highlight word under cursor
-autocmd CursorMoved * exe printf('match StatusLine /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+autocmd CursorMoved * exe printf('match Underlined /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " Spell check
 setlocal spell spelllang=en_us
