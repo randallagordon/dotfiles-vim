@@ -136,8 +136,12 @@ endif
 " Source the vimrc file after saving it
 autocmd BufWritePost vimrc source $MYVIMRC
 
+" Width column highlight
+set colorcolumn=+1
+highlight ColorColumn ctermbg=234 guibg=#1c1c1c
+
 " Super nifty mappings
-" ------------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
 
 " Bubble single lines
 nmap <C-Up> [e
