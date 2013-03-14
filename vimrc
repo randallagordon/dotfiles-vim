@@ -6,9 +6,14 @@ call pathogen#runtime_append_all_bundles()
 
 " Color theme
 syntax on
+set hlsearch
 let g:molokai_original = 1
 set t_Co=256
 colorscheme molokai
+
+" Color tweaks
+highlight SpellBad term=reverse ctermfg=8 ctermbg=52 gui=undercurl guisp=#FF0000
+highlight SpellCap term=reverse ctermfg=8 ctermbg=17 gui=undercurl guisp=#FF0000
 
 " Highlight word under cursor
 autocmd CursorMoved * exe printf('match Underlined /\V\<%s\>/', escape(expand('<cword>'), '/\'))
@@ -35,7 +40,7 @@ let g:Powerline_symbols="fancy"
 set number
 set tabstop=2
 set shiftwidth=2
-" set smarttab
+set smarttab
 set showmatch
 set mouse=a
 set autoindent
@@ -63,6 +68,7 @@ endif
 
 " Status Line Left Side
 set laststatus=2
+set statusline=
 set statusline+=[%n]
 set statusline+=\ %<%.99f
 set statusline+=\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y
@@ -72,8 +78,10 @@ set statusline+=ASCII\:\ %03.b
 set statusline+=\ %-16(\ %l,%c-%v\ %)%P
 
 " Hex editing goodness
-command Hex :%!xxd
-command Unhex :%!xxd -r
+if !exists(":DiffOrig")
+  command Hex :%!xxd
+  command Unhex :%!xxd -r
+endif
 
 " Multiple undo
 set cpoptions-=u
@@ -92,7 +100,7 @@ set fdc=2
 set fdm=syntax
 nnoremap <space> za
 vnoremap <space> zf
-set foldlevelstart=1
+set foldlevelstart=99
 set foldnestmax=2
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
@@ -109,9 +117,34 @@ highlight NonText guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 highlight SpecialKey guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 set list
 
+" When editing a file, always jump to the last known cursor position.
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+" Store swap files in fixed location, not current directory.
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+
+" Diff current buffer against saved file
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+    \ | wincmd p | diffthis
+  map <leader>d :DiffOrig<CR>
+endif
+
+" Source the vimrc file after saving it
+autocmd BufWritePost vimrc source $MYVIMRC
+
 " Super nifty mappings
 " ------------------------------------------------------------------------------
 
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 " ragtag
 let g:ragtag_global_maps=1
 " Find word under cursor in files, recursing from current directory down
@@ -128,6 +161,6 @@ nmap <leader>t :TagbarToggle<CR>
 " NERD Tree Toggle
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 " Ctrl + R search & replace of selection
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 " Toggle paste mode to play nice with PuTTY
-set pastetoggle=<leader>p
+set pastetoggle=<C-p>
