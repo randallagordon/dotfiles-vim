@@ -37,3 +37,12 @@
 [submodule "bundle/xterm-color-table"]
 	path = bundle/xterm-color-table
 	url = https://github.com/guns/xterm-color-table.vim.git
+[submodule "bundle/vim-instant-markdown"]
+	path = bundle/vim-instant-markdown
+	url = git://github.com/suan/vim-instant-markdown.git
+[submodule "bundle/tabulard"]
+	path = bundle/tabulard
+	url = git://github.com/godlygeek/tabular.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
