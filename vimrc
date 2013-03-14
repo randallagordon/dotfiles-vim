@@ -35,8 +35,7 @@ let g:Powerline_symbols="fancy"
 set number
 set tabstop=2
 set shiftwidth=2
-set smarttab
-set expandtab
+" set smarttab
 set showmatch
 set mouse=a
 set autoindent
@@ -44,9 +43,23 @@ set cursorline
 set formatoptions+=r
 set backspace=indent,eol,start
 
-" I forgot why this is necessary...but it is, promise!
-filetype off
-filetype on
+" Filetype settings
+filetype plugin indent on
+if has("autocmd")
+  " TODO: Get fancy with PEP8 for Python
+  " Currently using ftplugin/python.vim
+  " Use flake8? https://github.com/nvie/vim-flake8
+  " Or python-mode? https://github.com/klen/python-mode
+
+  " House styles
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+
+  " Similar format mappings
+  autocmd BufNewFile,BufRead *.json set ft=javascript
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+endif
 
 " Status Line Left Side
 set laststatus=2
@@ -62,7 +75,7 @@ set statusline+=\ %-16(\ %l,%c-%v\ %)%P
 command Hex :%!xxd
 command Unhex :%!xxd -r
 
-" Get multiple undo working
+" Multiple undo
 set cpoptions-=u
 
 " Make screen/byobu happy
@@ -89,17 +102,12 @@ let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 
-" File Formats
-autocmd BufNewFile,BufRead *.json set ft=javascript
-" TODO: Get fancy with PEP8 for Python
-" Use flake8? https://github.com/nvie/vim-flake8
-" Or python-mode? https://github.com/klen/python-mode
-
-" listchars setup with toggle
+" listchars setup, with toggle
 nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 highlight SpecialKey guifg=#4a4a59 ctermfg=236 ctermbg=NONE
+set list
 
 " Super nifty mappings
 " ------------------------------------------------------------------------------
