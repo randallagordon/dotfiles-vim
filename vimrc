@@ -168,3 +168,5 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 " Toggle paste mode to play nice with PuTTY
 set pastetoggle=<C-p>
+" Clear last search highlighting
+map <leader>/ :noh<CR>
