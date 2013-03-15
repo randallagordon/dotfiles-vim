@@ -7,6 +7,7 @@ call pathogen#runtime_append_all_bundles()
 " Color theme
 syntax on
 set hlsearch
+set incsearch
 let g:molokai_original = 1
 set t_Co=256
 colorscheme molokai
@@ -170,3 +171,6 @@ vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 set pastetoggle=<C-p>
 " Clear last search highlighting
 map <leader>/ :noh<CR>
+" visual indenting
+vnoremap < <gv
+vnoremap > >gv
