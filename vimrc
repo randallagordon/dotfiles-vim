@@ -135,7 +135,7 @@ if !exists(":DiffOrig")
 endif
 
 " Source the vimrc file after saving it
-autocmd BufWritePost vimrc source $MYVIMRC
+"autocmd BufWritePost vimrc source $MYVIMRC
 
 " Width column highlight
 set colorcolumn=+1
@@ -174,3 +174,17 @@ map <leader>/ :noh<CR>
 " visual indenting
 vnoremap < <gv
 vnoremap > >gv
+" Spell check string literals
+" TODO: Per-language functions?
+function! SpellcheckStrings()
+  if exists('g:spellcheckStrings')
+    syn region  javaScriptStringD        start=+"+  skip=+\\\\\|\\"+  end=+"\|$+ contains=javaScriptSpecial,@htmlPreproc,@NoSpell
+    syn region  javaScriptStringS        start=+'+  skip=+\\\\\|\\'+  end=+'\|$+ contains=javaScriptSpecial,@htmlPreproc,@NoSpell
+    unlet g:spellcheckStrings
+  else
+    syn region  javaScriptStringD        start=+"+  skip=+\\\\\|\\"+  end=+"\|$+ contains=javaScriptSpecial,@htmlPreproc,@Spell
+    syn region  javaScriptStringS        start=+'+  skip=+\\\\\|\\'+  end=+'\|$+ contains=javaScriptSpecial,@htmlPreproc,@Spell
+    let g:spellcheckStrings = "@Spell"
+  endif
+endfunction
+map <leader>s :call SpellcheckStrings()<CR>
