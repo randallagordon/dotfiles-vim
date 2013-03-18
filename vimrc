@@ -50,6 +50,7 @@ set formatoptions+=r
 set backspace=indent,eol,start
 
 " Filetype settings
+filetype off " makes vim-coffee-script play nice for some reason...
 filetype plugin indent on
 if has("autocmd")
   " TODO: Get fancy with PEP8 for Python
@@ -58,9 +59,11 @@ if has("autocmd")
   " Or python-mode? https://github.com/klen/python-mode
 
   " House styles
+  autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
 
   " Similar format mappings
   autocmd BufNewFile,BufRead *.json set ft=javascript
