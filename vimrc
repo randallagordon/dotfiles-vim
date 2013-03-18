@@ -163,6 +163,8 @@ inoremap <c-w> <c-g>u<c-w>
 cmap w!! %!sudo tee > /dev/null %
 " Tagbar goodness
 nmap <leader>t :TagbarToggle<CR>
+" TaskList plugin
+map <leader>td <Plug>TaskList
 " NERD Tree Toggle
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 " Ctrl + R search & replace of selection
@@ -188,3 +190,5 @@ function! SpellcheckStrings()
   endif
 endfunction
 map <leader>s :call SpellcheckStrings()<CR>
+" PEP8
+let g:pep8_map='<leader>8'
