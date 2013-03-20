@@ -50,7 +50,7 @@ set formatoptions+=r
 set backspace=indent,eol,start
 
 " Filetype settings
-filetype off " makes vim-coffee-script play nice for some reason...
+filetype off " makes vim-coffee-script play nice with Pathogen
 filetype plugin indent on
 if has("autocmd")
   " TODO: Get fancy with PEP8 for Python
