@@ -67,3 +67,6 @@
 [submodule "bundle/vim-buffergator"]
 	path = bundle/vim-buffergator
 	url = git://github.com/jeetsukumaran/vim-buffergator.git
+[submodule "bundle/editorconfig"]
+	path = bundle/editorconfig
+	url = git@github.com:editorconfig/editorconfig-vim.git
