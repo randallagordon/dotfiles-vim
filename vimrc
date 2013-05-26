@@ -165,7 +165,7 @@ inoremap <c-w> <c-g>u<c-w>
 " Write files with sudo permissions
 cmap w!! %!sudo tee > /dev/null %
 " Tagbar goodness
-nmap <leader>t :TagbarToggle<CR>
+nmap <leader>\ :TagbarToggle<CR>
 " TaskList plugin
 map <leader>td <Plug>TaskList
 " NERD Tree Toggle
