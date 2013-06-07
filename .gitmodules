@@ -76,6 +76,6 @@
 [submodule "bundle/vim-easytags"]
 	path = bundle/vim-easytags
 	url = git://github.com/xolox/vim-easytags.git
-[submodule "vim-characterize"]
-	path = vim-characterize
+[submodule "bundle/vim-characterize"]
+	path = bundle/vim-characterize
 	url = git://github.com/tpope/vim-characterize.git
