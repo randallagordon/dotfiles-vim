@@ -38,7 +38,7 @@ set encoding=utf-8
 let g:Powerline_symbols="fancy"
 
 " General stuff
-set number
+set relativenumber
 set tabstop=2
 set shiftwidth=2
 set smarttab
@@ -48,6 +48,13 @@ set autoindent
 set cursorline
 set formatoptions+=r
 set backspace=indent,eol,start
+set ttyfast
+set wildmenu
+set wildmode=longest:full,full
+
+" Undo Stuff
+set cpoptions-=u
+set undofile
 
 " Filetype settings
 filetype off " makes vim-coffee-script play nice with Pathogen
@@ -86,9 +93,6 @@ if !exists(":DiffOrig")
   command Hex :%!xxd
   command Unhex :%!xxd -r
 endif
-
-" Multiple undo
-set cpoptions-=u
 
 " Make screen/byobu happy
 if &term == "screen-bce"
@@ -147,12 +151,16 @@ highlight ColorColumn ctermbg=234 guibg=#1c1c1c
 " Super nifty mappings
 " ----------------------------------------------------------------------------
 
+" Save some damn time!
+inoremap jj <ESC>
+let mapleader = ","
+
 " Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+nmap <C-k> [e
+nmap <C-j> ]e
 " Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vmap <C-k> [egv
+vmap <C-j> ]egv
 " ragtag
 let g:ragtag_global_maps=1
 " Find word under cursor in files, recursing from current directory down
