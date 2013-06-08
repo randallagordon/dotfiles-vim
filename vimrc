@@ -156,11 +156,18 @@ inoremap jj <ESC>
 let mapleader = ","
 
 " Bubble single lines
-nmap <C-k> [e
-nmap <C-j> ]e
+nmap <C-K> [e
+nmap <C-J> ]e
 " Bubble multiple lines
-vmap <C-k> [egv
-vmap <C-j> ]egv
+vmap <C-K> [egv
+vmap <C-J> ]egv
+
+" Jump between splits (Currently remaps single-line bubbles in normal)
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " ragtag
 let g:ragtag_global_maps=1
 " Find word under cursor in files, recursing from current directory down
