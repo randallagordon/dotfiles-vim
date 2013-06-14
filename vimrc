@@ -125,6 +125,10 @@ highlight NonText guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 highlight SpecialKey guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 set list
 
+" Better symbols for Syntastic
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '!'
+
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
