@@ -159,6 +159,9 @@ highlight ColorColumn ctermbg=234 guibg=#1c1c1c
 inoremap jj <ESC>
 let mapleader = ","
 
+" Make cursor stay put after yanking
+vmap y ygv<Esc>
+
 " Bubble single lines
 nmap <C-K> [e
 nmap <C-J> ]e
