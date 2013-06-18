@@ -137,6 +137,7 @@ autocmd BufReadPost *
 
 " Store swap files in fixed location, not current directory.
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+set undodir^=~/.vimswap
 
 " Diff current buffer against saved file
 if !exists(":DiffOrig")
