@@ -1,30 +1,30 @@
 [submodule "bundle/vim-autoclose"]
 	path = bundle/vim-autoclose
-	url = git://github.com/Townk/vim-autoclose.git
+	url = https://github.com/Townk/vim-autoclose.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "bundle/vim-powerline"]
 	path = bundle/vim-powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
+	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "bundle/vim-endwise"]
 	path = bundle/vim-endwise
-	url = git://github.com/tpope/vim-endwise.git
+	url = https://github.com/tpope/vim-endwise.git
 [submodule "bundle/vim-speeddating"]
 	path = bundle/vim-speeddating
-	url = git://github.com/tpope/vim-speeddating.git
+	url = https://github.com/tpope/vim-speeddating.git
 [submodule "bundle/vim-handlebars"]
 	path = bundle/vim-handlebars
-	url = git://github.com/nono/vim-handlebars.git
+	url = https://github.com/nono/vim-handlebars.git
 [submodule "bundle/vim-brunch"]
 	path = bundle/vim-brunch
-	url = git://github.com/drichard/vim-brunch.git
+	url = https://github.com/drichard/vim-brunch.git
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
-	url = http://github.com/majutsushi/tagbar
+	url = https://github.com/majutsushi/tagbar
 [submodule "bundle/vim-rails"]
 	path = bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
+	url = https://github.com/tpope/vim-rails.git
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
@@ -39,13 +39,13 @@
 	url = https://github.com/guns/xterm-color-table.vim.git
 [submodule "bundle/vim-instant-markdown"]
 	path = bundle/vim-instant-markdown
-	url = git://github.com/suan/vim-instant-markdown.git
+	url = https://github.com/suan/vim-instant-markdown.git
 [submodule "bundle/tabulard"]
 	path = bundle/tabulard
-	url = git://github.com/godlygeek/tabular.git
+	url = https://github.com/godlygeek/tabular.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
-	url = git://github.com/godlygeek/tabular.git
+	url = https://github.com/godlygeek/tabular.git
 [submodule "bundle/tasklist"]
 	path = bundle/tasklist
 	url = https://github.com/vim-scripts/TaskList.vim.git
@@ -60,28 +60,28 @@
 	url = https://github.com/kchmck/vim-coffee-script
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
+	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "bundle/zencoding-vim"]
 	path = bundle/zencoding-vim
-	url = git://github.com/mattn/zencoding-vim.git
+	url = https://github.com/mattn/zencoding-vim.git
 [submodule "bundle/vim-buffergator"]
 	path = bundle/vim-buffergator
-	url = git://github.com/jeetsukumaran/vim-buffergator.git
+	url = https://github.com/jeetsukumaran/vim-buffergator.git
 [submodule "bundle/editorconfig"]
 	path = bundle/editorconfig
-	url = git@github.com:editorconfig/editorconfig-vim.git
+	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "bundle/vim-misc"]
 	path = bundle/vim-misc
-	url = git://github.com/xolox/vim-misc.git
+	url = https://github.com/xolox/vim-misc.git
 [submodule "bundle/vim-easytags"]
 	path = bundle/vim-easytags
-	url = git://github.com/xolox/vim-easytags.git
+	url = https://github.com/xolox/vim-easytags.git
 [submodule "bundle/vim-characterize"]
 	path = bundle/vim-characterize
-	url = git://github.com/tpope/vim-characterize.git
+	url = https://github.com/tpope/vim-characterize.git
 [submodule "bundle/vim-abolish"]
 	path = bundle/vim-abolish
-	url = git://github.com/tpope/vim-abolish.git
+	url = https://github.com/tpope/vim-abolish.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
+	url = https://github.com/scrooloose/syntastic.git
