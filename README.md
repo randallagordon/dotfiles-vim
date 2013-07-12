@@ -9,4 +9,4 @@ I'm not normal. You've been warned.
 
 And Exuberant Ctags needs installed. On Ubuntu/Debian:
 
-    sudo-apt get install exuberant-ctags
+    sudo apt-get install exuberant-ctags
