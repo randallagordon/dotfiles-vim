@@ -112,3 +112,6 @@
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = git@github.com:mattn/emmet-vim.git
+[submodule "bundle/vim-signature"]
+	path = bundle/vim-signature
+	url = https://github.com/kshenoy/vim-signature.git
