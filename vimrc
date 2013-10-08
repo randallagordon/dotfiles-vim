@@ -121,7 +121,7 @@ let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 
 " listchars setup, with toggle
-nmap <leader>l :set list!<CR>
+nmap <leader>c :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 highlight SpecialKey guifg=#4a4a59 ctermfg=236 ctermbg=NONE
@@ -198,7 +198,7 @@ nmap <silent> <c-n> :NERDTreeToggle<CR>
 " Ctrl + R search & replace of selection
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 " Toggle paste mode to play nice with PuTTY
-set pastetoggle=<C-p>
+set pastetoggle=<leader>p
 " Clear last search highlighting
 map <leader>/ :noh<CR>
 " visual indenting
