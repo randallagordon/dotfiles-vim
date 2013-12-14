@@ -4,9 +4,15 @@ I'm not normal. You've been warned.
 
 ### Installation and Setup
 
-    git clone https://github.com/randallagordon/dotfiles-vim.git ~/.vim
-    ~/.vim/install.sh
+```sh
+$ git clone https://github.com/randallagordon/dotfiles-vim.git ~/.vim
+$ ~/.vim/install.sh
+
+$ pip install --user git+git://github.com/Lokaltog/powerline
+```
 
 And Exuberant Ctags needs installed. On Ubuntu/Debian:
 
-    sudo apt-get install exuberant-ctags
+```sh
+$ sudo apt-get install exuberant-ctags
+```

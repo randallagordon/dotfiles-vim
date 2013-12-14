@@ -1,14 +1,34 @@
 " Make Vim behave in a more useful way
 set nocompatible
 
+" Powerline!
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set encoding=utf-8
+set noshowmode
+" Powerline GUI awesomeness, if a patched font is available
+set guifont=Consolas\ for\ Powerline\ FixedD:h9
+
 " Pathogen
 call pathogen#runtime_append_all_bundles() 
+
+
+" Status Line Left Side
+set laststatus=2
+set statusline=
+set statusline+=[%n]
+set statusline+=\ %<%.99f
+set statusline+=\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y
+"" Status Line Right Side
+set statusline+=%=
+set statusline+=ASCII\:\ %03.b
+set statusline+=\ %-16(\ %l,%c-%v\ %)%P
 
 " Color theme
 syntax on
 set hlsearch
 set incsearch
 let g:molokai_original = 1
+let g:rehash256 = 1
 set t_Co=256
 colorscheme molokai
 
@@ -31,11 +51,6 @@ if has("gui_running")
     set lines=56 columns=220
   endif
 endif
-
-" Powerline awesomeness, if a patched font is available
-set guifont=Consolas\ for\ Powerline\ FixedD:h9
-set encoding=utf-8
-let g:Powerline_symbols="fancy"
 
 " General stuff
 set relativenumber
@@ -79,17 +94,6 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.blade setfiletype jade
 endif
 
-" Status Line Left Side
-set laststatus=2
-set statusline=
-set statusline+=[%n]
-set statusline+=\ %<%.99f
-set statusline+=\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y
-"" Status Line Right Side
-set statusline+=%=
-set statusline+=ASCII\:\ %03.b
-set statusline+=\ %-16(\ %l,%c-%v\ %)%P
-
 " Hex editing goodness
 if !exists(":DiffOrig")
   command Hex :%!xxd
@@ -104,6 +108,7 @@ if &term == "screen-bce"
   imap <Right> <ESC>kl
   imap <Left> <ESC>kh
 endif
+set term=screen-256color
 
 " Code folding goodies
 set fdc=2
@@ -220,3 +225,4 @@ endfunction
 map <leader>s :call SpellcheckStrings()<CR>
 " PEP8
 let g:pep8_map='<leader>8'
+
