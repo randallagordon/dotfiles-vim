@@ -101,14 +101,12 @@ if !exists(":DiffOrig")
 endif
 
 " Make screen/byobu happy
-if &term == "screen-bce"
-  set ttymouse=xterm2
-  imap <Up> <ESC>kj
-  imap <Down> <ESC>ki
-  imap <Right> <ESC>kl
-  imap <Left> <ESC>kh
-endif
-set term=screen-256color
+set term=screen-256color " Fix redraw weirdness with background disappearing
+set ttymouse=xterm2
+imap <Up> <ESC>kj
+imap <Down> <ESC>ki
+imap <Right> <ESC>kl
+imap <Left> <ESC>kh
 
 " Code folding goodies
 set fdc=2
@@ -166,6 +164,8 @@ highlight ColorColumn ctermbg=234 guibg=#1c1c1c
 " Save some damn time!
 inoremap jj <ESC>
 let mapleader = ","
+map ; :
+noremap ;; ;
 
 " Make cursor stay put after yanking
 vmap y ygv<Esc>
