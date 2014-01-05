@@ -134,6 +134,9 @@ set list
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
 
+" Override settings for vim-autoformat
+let g:formatprg_args_javascript='%'
+
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |

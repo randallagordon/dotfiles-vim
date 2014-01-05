@@ -118,3 +118,9 @@
 [submodule "bundle/colors-molokai"]
 	path = bundle/colors-molokai
 	url = https://github.com/tomasr/molokai.git
+[submodule "bundle/vim-autoformat"]
+	path = bundle/vim-autoformat
+	url = https://github.com/Chiel92/vim-autoformat.git
+[submodule "bundle/colors-monokai"]
+	path = bundle/colors-monokai
+	url = https://github.com/sickill/vim-monokai.git
