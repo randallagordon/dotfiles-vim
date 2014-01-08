@@ -124,3 +124,6 @@
 [submodule "bundle/colors-monokai"]
 	path = bundle/colors-monokai
 	url = https://github.com/sickill/vim-monokai.git
+[submodule "bundle/vim-togglelist"]
+	path = bundle/vim-togglelist
+	url = https://github.com/milkypostman/vim-togglelist.git
