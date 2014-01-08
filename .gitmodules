@@ -127,3 +127,6 @@
 [submodule "bundle/vim-togglelist"]
 	path = bundle/vim-togglelist
 	url = https://github.com/milkypostman/vim-togglelist.git
+[submodule "bundle/colors-solarized"]
+	path = bundle/colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
