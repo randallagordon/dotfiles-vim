@@ -130,3 +130,6 @@
 [submodule "bundle/colors-solarized"]
 	path = bundle/colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/colors-summerfruit256"]
+	path = bundle/colors-summerfruit256
+	url = https://github.com/vim-scripts/summerfruit256.vim.git
