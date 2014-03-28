@@ -133,3 +133,6 @@
 [submodule "bundle/colors-summerfruit256"]
 	path = bundle/colors-summerfruit256
 	url = https://github.com/vim-scripts/summerfruit256.vim.git
+[submodule "bundle/vim-signify"]
+	path = bundle/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
