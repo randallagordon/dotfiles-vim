@@ -1,7 +1,6 @@
 # Prototype
 snippet proto
-	${1nipclass_name}.prototype.${2:method_name} =
-	function (${3:first_argument}) {
+	${1:class_name}.prototype.${2:method_name} = function (${3:first_argument}) {
 		${4:// body...}
 	};
 # Function
@@ -11,11 +10,11 @@ snippet fun
 	}
 # Anonymous Function
 snippet f
-	function (${1}) {${2}};
+	function (${1}) {${2}}
 # Function with anonymous function passed in
 snippet ff
-	${1:method_name}(function (${2}) {
-		${3}
+	${1:method_name}(${2:arguments, }function (${3}) {
+		${4}
 	});
 # Object Method
 snippet :f
@@ -77,3 +76,6 @@ snippet get
 # Get Element
 snippet gett
 	getElementBy${1:Id}('${2}')${3}
+# Variable Declaration
+snippet v
+	var ${1:name} = ${2:value};
