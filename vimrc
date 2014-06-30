@@ -54,6 +54,7 @@ endif
 
 " General stuff
 set relativenumber
+set number " Vim 7.4 lets us have both! Woo!
 set tabstop=2
 set shiftwidth=2
 set smarttab
