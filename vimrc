@@ -93,6 +93,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead .jshintrc set ft=javascript
   autocmd BufNewFile,BufRead *.rss setfiletype xml
   autocmd BufNewFile,BufRead *.blade setfiletype jade
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 endif
 
 " Hex editing goodness
