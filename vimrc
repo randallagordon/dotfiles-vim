@@ -3,6 +3,7 @@ set nocompatible
 
 " Powerline!
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
 set encoding=utf-8
 set noshowmode
 " Powerline GUI awesomeness, if a patched font is available
@@ -213,6 +214,8 @@ map <leader>/ :noh<CR>
 " visual indenting
 vnoremap < <gv
 vnoremap > >gv
+" Spell check based word completion
+set complete+=kspell
 " Spell check string literals
 " TODO: Per-language functions?
 function! SpellcheckStrings()
@@ -227,6 +230,9 @@ function! SpellcheckStrings()
   endif
 endfunction
 map <leader>s :call SpellcheckStrings()<CR>
+" Turn off spellcheck entirely
+map <leader><leader>s :set nospell<cr>
+
 " PEP8
 let g:pep8_map='<leader>8'
 
