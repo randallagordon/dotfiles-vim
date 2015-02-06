@@ -236,3 +236,6 @@ map <leader><leader>s :set nospell<cr>
 " PEP8
 let g:pep8_map='<leader>8'
 
+" Make vim-fugitive's Ggrep more awesome!
+command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+
