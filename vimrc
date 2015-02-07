@@ -176,11 +176,11 @@ noremap ;; ;
 vmap y ygv<Esc>
 
 " Bubble single lines
-nmap <C-K> [e
-nmap <C-J> ]e
+nmap <c-j><c-j> ]e
+nmap <c-k><c-k> [e
 " Bubble multiple lines
-vmap <C-K> [egv
-vmap <C-J> ]egv
+vmap <c-k> [egv
+vmap <c-j> ]egv
 
 " Jump between splits (Currently remaps single-line bubbles in normal)
 nnoremap <C-h> <C-w>h
