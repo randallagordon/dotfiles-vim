@@ -196,34 +196,60 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Yank from the cursor to the end of the line, to be consistent with C and D
+nnoremap Y y$
+
+" Copy relative path to the system pasteboard
+nnoremap <silent><Leader>cfn :let @*=expand('%')<CR>
+
+" Copy relative path and line number to the system pasteboard
+nnoremap <silent><Leader>cln :let @*=expand('%').':'.line('.')<CR>
+
+" Yank to system pasteboard with <Leader>y
+noremap  <Leader>y  "*y
+nnoremap <Leader>yy "*yy
+
 " ragtag
 let g:ragtag_global_maps=1
+
 " Find word under cursor in files, recursing from current directory down
 map <leader>f :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+
 " Open file under cursor in new tab
 map gf :tabnew <cfile><CR>
+
 " Make <c-u> play nice with undo
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
+
 " Write files with sudo permissions
 cmap w!! %!sudo tee > /dev/null %
+
 " Tagbar goodness
 nmap <leader>\ :TagbarToggle<CR>
+
 " TaskList plugin
 map <leader>td <Plug>TaskList
+
 " NERD Tree Toggle
 nmap <silent> <c-n> :NERDTreeToggle<CR>
-" Ctrl + R search & replace of selection
+
+" Ctrl + R style search & replace of selection
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
+
 " Toggle paste mode to play nice with PuTTY
 set pastetoggle=<leader>p
+
 " Clear last search highlighting
 map <leader>/ :noh<CR>
+
 " visual indenting
 vnoremap < <gv
 vnoremap > >gv
+
 " Spell check based word completion
 set complete+=kspell
+
 " Spell check string literals
 " TODO: Per-language functions?
 function! SpellcheckStrings()
@@ -238,6 +264,7 @@ function! SpellcheckStrings()
   endif
 endfunction
 map <leader>s :call SpellcheckStrings()<CR>
+
 " Turn off spellcheck entirely
 map <leader><leader>s :set nospell<cr>
 
