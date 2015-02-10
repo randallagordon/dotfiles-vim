@@ -116,7 +116,7 @@ set fdm=syntax
 nnoremap <space> za
 vnoremap <space> zf
 set foldlevelstart=99
-set foldnestmax=2
+set foldnestmax=5
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
 let php_folding=1             " PHP
@@ -162,6 +162,14 @@ endif
 " Width column highlight
 set colorcolumn=+1
 highlight ColorColumn ctermbg=234 guibg=#1c1c1c
+
+" vim-indent-guides config and colors
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 
 " Super nifty mappings
 " ----------------------------------------------------------------------------
