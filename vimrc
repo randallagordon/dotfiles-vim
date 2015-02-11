@@ -274,3 +274,11 @@ let g:pep8_map='<leader>8'
 " Make vim-fugitive's Ggrep more awesome!
 command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 
+" Map CamelCaseMotion motions over standard motions
+" Remember this is here, could cause some issues with macros and repeats
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+sunmap w
+sunmap b
+sunmap e
