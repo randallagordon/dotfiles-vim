@@ -163,3 +163,6 @@
 [submodule "bundle/splitjoin"]
 	path = bundle/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim.git
+[submodule "bundle/vsearch"]
+	path = bundle/vsearch
+	url = https://github.com/BenBergman/vsearch.vim.git
