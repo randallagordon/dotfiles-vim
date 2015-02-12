@@ -216,8 +216,9 @@ let g:ragtag_global_maps=1
 " Find word under cursor in files, recursing from current directory down
 map <leader>f :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
-" Open file under cursor in new tab
-map gf :tabnew <cfile><CR>
+" Open file under cursor in new tab - Already mapped to <c-w>gf, commenting
+" out for now since the original gf to open in the current buffer is useful
+"map gf :tabnew <cfile><CR>
 
 " Make <c-u> play nice with undo
 inoremap <c-u> <c-g>u<c-u>
@@ -283,3 +284,9 @@ map <silent> e <Plug>CamelCaseMotion_e
 sunmap w
 sunmap b
 sunmap e
+
+" vim-node config
+autocmd User Node
+  \ if &filetype == "javascript" |
+  \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
+  \ endif
