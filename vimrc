@@ -3,6 +3,7 @@ set nocompatible
 
 " Powerline!
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
 set encoding=utf-8
 set noshowmode
 " Powerline GUI awesomeness, if a patched font is available
@@ -116,7 +117,7 @@ set fdm=syntax
 nnoremap <space> za
 vnoremap <space> zf
 set foldlevelstart=99
-set foldnestmax=2
+set foldnestmax=5
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
 let php_folding=1             " PHP
@@ -163,6 +164,14 @@ endif
 set colorcolumn=+1
 highlight ColorColumn ctermbg=234 guibg=#1c1c1c
 
+" vim-indent-guides config and colors
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+
 " Super nifty mappings
 " ----------------------------------------------------------------------------
 
@@ -176,44 +185,72 @@ noremap ;; ;
 vmap y ygv<Esc>
 
 " Bubble single lines
-nmap <C-K> [e
-nmap <C-J> ]e
+nmap <leader>j ]e
+nmap <leader>k [e
 " Bubble multiple lines
-vmap <C-K> [egv
-vmap <C-J> ]egv
+vmap <leader>j ]egv
+vmap <leader>k [egv
 
-" Jump between splits (Currently remaps single-line bubbles in normal)
+" Jump between splits
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Yank from the cursor to the end of the line, to be consistent with C and D
+nnoremap Y y$
+
+" Copy relative path to the system pasteboard
+nnoremap <silent><Leader>cfn :let @*=expand('%')<CR>
+
+" Copy relative path and line number to the system pasteboard
+nnoremap <silent><Leader>cln :let @*=expand('%').':'.line('.')<CR>
+
+" Yank to system pasteboard with <Leader>y
+noremap  <Leader>y  "*y
+nnoremap <Leader>yy "*yy
+
 " ragtag
 let g:ragtag_global_maps=1
+
 " Find word under cursor in files, recursing from current directory down
 map <leader>f :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+
 " Open file under cursor in new tab
 map gf :tabnew <cfile><CR>
+
 " Make <c-u> play nice with undo
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
+
 " Write files with sudo permissions
 cmap w!! %!sudo tee > /dev/null %
+
 " Tagbar goodness
 nmap <leader>\ :TagbarToggle<CR>
+
 " TaskList plugin
 map <leader>td <Plug>TaskList
+
 " NERD Tree Toggle
 nmap <silent> <c-n> :NERDTreeToggle<CR>
-" Ctrl + R search & replace of selection
+
+" Ctrl + R style search & replace of selection
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
+
 " Toggle paste mode to play nice with PuTTY
 set pastetoggle=<leader>p
+
 " Clear last search highlighting
 map <leader>/ :noh<CR>
+
 " visual indenting
 vnoremap < <gv
 vnoremap > >gv
+
+" Spell check based word completion
+set complete+=kspell
+
 " Spell check string literals
 " TODO: Per-language functions?
 function! SpellcheckStrings()
@@ -228,6 +265,21 @@ function! SpellcheckStrings()
   endif
 endfunction
 map <leader>s :call SpellcheckStrings()<CR>
+
+" Turn off spellcheck entirely
+map <leader><leader>s :set nospell<cr>
+
 " PEP8
 let g:pep8_map='<leader>8'
 
+" Make vim-fugitive's Ggrep more awesome!
+command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+
+" Map CamelCaseMotion motions over standard motions
+" Remember this is here, could cause some issues with macros and repeats
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+sunmap w
+sunmap b
+sunmap e
