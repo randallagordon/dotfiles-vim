@@ -172,3 +172,6 @@
 [submodule "bundle/vim-node"]
 	path = bundle/vim-node
 	url = https://github.com/moll/vim-node.git
+[submodule "bundle/pony"]
+	path = bundle/pony
+	url = https://github.com/jmcomets/vim-pony.git
