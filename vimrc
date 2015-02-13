@@ -3,6 +3,7 @@ set nocompatible
 
 " Powerline!
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set rtp+=$HOME/src/powerline/powerline/bindings/vim/
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
 set encoding=utf-8
 set noshowmode
