@@ -60,7 +60,6 @@ set tabstop=2
 set shiftwidth=2
 set smarttab
 set showmatch
-set mouse=a
 set autoindent
 set cursorline
 set formatoptions+=r
@@ -68,6 +67,13 @@ set backspace=indent,eol,start
 set ttyfast
 set wildmenu
 set wildmode=longest:full,full
+
+" Mouse Stuff
+set mouse=a
+set ttymouse=xterm2
+if has('mouse_sgr')
+    set ttymouse=sgr
+endif
 
 " Undo Stuff
 set cpoptions-=u
@@ -105,7 +111,6 @@ endif
 
 " Make screen/byobu happy
 set term=screen-256color " Fix redraw weirdness with background disappearing
-set ttymouse=xterm2
 imap <Up> <ESC>kj
 imap <Down> <ESC>ki
 imap <Right> <ESC>kl
