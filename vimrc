@@ -14,6 +14,7 @@ set guifont=Consolas\ for\ Powerline\ FixedD:h9
 call pathogen#runtime_append_all_bundles() 
 
 
+" Now taken over by Powerline, but left for times when it isn't available
 " Status Line Left Side
 set laststatus=2
 set statusline=
@@ -24,6 +25,7 @@ set statusline+=\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():'
 set statusline+=%=
 set statusline+=ASCII\:\ %03.b
 set statusline+=\ %-16(\ %l,%c-%v\ %)%P
+
 
 " Color theme
 syntax on
@@ -40,9 +42,6 @@ highlight SpellCap term=reverse ctermfg=8 ctermbg=17 gui=undercurl guisp=#FF0000
 
 " Highlight word under cursor
 autocmd CursorMoved * exe printf('match Underlined /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-
-" Spell check
-setlocal spell spelllang=en_us
 
 " Get all sorts of fontacular across multiple platforms...
 if has("gui_running")
@@ -255,12 +254,17 @@ map <leader>/ :noh<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+
+" Spell check
+setlocal spell spelllang=en_us
+
 " Spell check based word completion
 set complete+=kspell
 
 " Spell check string literals
 " TODO: Per-language functions?
 function! SpellcheckStrings()
+  set spell
   if exists('g:spellcheckStrings')
     syn region  javaScriptStringD        start=+"+  skip=+\\\\\|\\"+  end=+"\|$+ contains=javaScriptSpecial,@htmlPreproc,@NoSpell
     syn region  javaScriptStringS        start=+'+  skip=+\\\\\|\\'+  end=+'\|$+ contains=javaScriptSpecial,@htmlPreproc,@NoSpell
