@@ -202,6 +202,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" File open helpers
+" http://vimcasts.org/e/14
+nmap <leader>ew :e <C-R>=expand('%:h').'/'<cr>
+nmap <leader>es :sp <C-R>=expand('%:h').'/'<cr>
+nmap <leader>ev :vsp <C-R>=expand('%:h').'/'<cr>
+nmap <leader>et :tabe <C-R>=expand('%:h').'/'<cr>
+
 " Yank from the cursor to the end of the line, to be consistent with C and D
 nnoremap Y y$
 
@@ -282,6 +289,14 @@ map <leader><leader>s :set nospell<cr>
 
 " PEP8
 let g:pep8_map='<leader>8'
+
+" vim-fugititve mappings
+nmap <leader>gb :Gblame<CR>
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gl :Glog<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Git push<CR>
 
 " Make vim-fugitive's Ggrep more awesome!
 command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
