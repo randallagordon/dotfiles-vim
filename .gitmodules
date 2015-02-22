@@ -16,6 +16,7 @@
 [submodule "bundle/vim-brunch"]
 	path = bundle/vim-brunch
 	url = https://github.com/drichard/vim-brunch.git
+	ignore = dirty
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
@@ -28,12 +29,14 @@
 [submodule "bundle/jshint"]
 	path = bundle/jshint
 	url = https://github.com/walm/jshint.vim
+	ignore = dirty
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "bundle/xterm-color-table"]
 	path = bundle/xterm-color-table
 	url = https://github.com/guns/xterm-color-table.vim.git
+	ignore = dirty
 [submodule "bundle/vim-instant-markdown"]
 	path = bundle/vim-instant-markdown
 	url = https://github.com/suan/vim-instant-markdown.git
@@ -169,6 +172,7 @@
 [submodule "bundle/camelcasemotion"]
 	path = bundle/camelcasemotion
 	url = https://github.com/vim-scripts/camelcasemotion.git
+	ignore = dirty
 [submodule "bundle/vim-node"]
 	path = bundle/vim-node
 	url = https://github.com/moll/vim-node.git
