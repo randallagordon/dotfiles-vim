@@ -11,7 +11,7 @@ set noshowmode
 set guifont=Consolas\ for\ Powerline\ FixedD:h9
 
 " Pathogen
-call pathogen#runtime_append_all_bundles() 
+call pathogen#infect()
 
 
 " Now taken over by Powerline, but left for times when it isn't available
@@ -80,7 +80,7 @@ set cpoptions-=u
 set undofile
 
 " Filetype settings
-filetype off " makes vim-coffee-script play nice with Pathogen
+filetype off " Reset stuff for Pathogen
 filetype plugin indent on
 if has("autocmd")
   " TODO: Get fancy with PEP8 for Python
