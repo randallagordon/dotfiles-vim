@@ -175,3 +175,6 @@
 [submodule "bundle/pony"]
 	path = bundle/pony
 	url = https://github.com/jmcomets/vim-pony.git
+[submodule "bundle/NrrwRgn"]
+	path = bundle/NrrwRgn
+	url = https://github.com/chrisbra/NrrwRgn.git
