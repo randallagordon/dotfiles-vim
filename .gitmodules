@@ -182,3 +182,6 @@
 [submodule "bundle/NrrwRgn"]
 	path = bundle/NrrwRgn
 	url = https://github.com/chrisbra/NrrwRgn.git
+[submodule "bundle/vim-reddit"]
+	path = bundle/vim-reddit
+	url = https://github.com/joshhartigan/vim-reddit.git
