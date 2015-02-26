@@ -315,3 +315,6 @@ autocmd User Node
   \ if &filetype == "javascript" |
   \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
   \ endif
+
+" scoped
+nmap <leader>sc :exe "!scoped % --position=" . line(".")<CR>
