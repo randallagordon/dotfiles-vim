@@ -309,6 +309,9 @@ map <silent> e <Plug>CamelCaseMotion_e
 sunmap w
 sunmap b
 sunmap e
+" TODO: Fix ALL issues with `w` motion including space after the word
+nmap cw ce
+nmap dw de
 
 " vim-node config
 autocmd User Node

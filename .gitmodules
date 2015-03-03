@@ -169,10 +169,6 @@
 [submodule "bundle/vsearch"]
 	path = bundle/vsearch
 	url = https://github.com/BenBergman/vsearch.vim.git
-[submodule "bundle/camelcasemotion"]
-	path = bundle/camelcasemotion
-	url = https://github.com/vim-scripts/camelcasemotion.git
-	ignore = dirty
 [submodule "bundle/vim-node"]
 	path = bundle/vim-node
 	url = https://github.com/moll/vim-node.git
@@ -185,3 +181,6 @@
 [submodule "bundle/vim-reddit"]
 	path = bundle/vim-reddit
 	url = https://github.com/joshhartigan/vim-reddit.git
+[submodule "bundle/camelcasemotion"]
+	path = bundle/camelcasemotion
+	url = https://github.com/bkad/CamelCaseMotion.git
