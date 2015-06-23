@@ -321,3 +321,9 @@ autocmd User Node
 
 " scoped
 nmap <leader>sc :exe "!scoped % --position=" . line(".")<CR>
+
+" Syntastic :Errors Mapping
+map <leader>e :Errors<CR>
+
+" dash.vim
+nmap <silent> <leader>d <Plug>DashSearch
