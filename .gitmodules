@@ -196,3 +196,9 @@
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+[submodule "bundle/vim-bundler"]
+	path = bundle/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
+[submodule "bundle/vim-rbenv"]
+	path = bundle/vim-rbenv
+	url = git://github.com/tpope/vim-rbenv.git
