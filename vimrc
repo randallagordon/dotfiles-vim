@@ -141,6 +141,12 @@ set list
 " Better symbols for Syntastic
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
+"let g:syntastic_javascript_checkers = ['jsxhint']
+"let g:syntastic_javascript_jsxhint_args = "--harmony"
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'rubylint']
+" Show ALL errors, crucial for scss-lint
+let g:syntastic_aggregate_errors = 1
 
 " Override settings for vim-autoformat
 let g:formatprg_args_javascript='%'
@@ -201,6 +207,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" tmux-esque window (buffer) zoom
+nnoremap <C-w>z :tab sb<cr>
 
 " File open helpers
 " http://vimcasts.org/e/14
@@ -290,6 +299,9 @@ map <leader><leader>s :set nospell<cr>
 " PEP8
 let g:pep8_map='<leader>8'
 
+" vim-rails mappings
+nmap <leader>r :Rake<CR>
+
 " vim-fugititve mappings
 nmap <leader>gb :Gblame<CR>
 nmap <leader>gs :Gstatus<CR>
@@ -319,11 +331,16 @@ autocmd User Node
   \   nmap <buffer> <C-w><C-f> <Plug>NodeVSplitGotoFile |
   \ endif
 
-" scoped
+" scoped, provenance
 nmap <leader>sc :exe "!scoped % --position=" . line(".")<CR>
+nmap <leader>sx :exe "!provenance % " . line(".") . " " . col(".") . "\| dot -Tpng \| ql" <CR>
 
 " Syntastic :Errors Mapping
 map <leader>e :Errors<CR>
 
 " dash.vim
 nmap <silent> <leader>d <Plug>DashSearch
+
+" NERDCommenter Settings
+let NERDSpaceDelims=1 " Add spaces after `//` comments
+let NERDTreeWinSize = 50
