@@ -96,7 +96,7 @@ if has("autocmd")
   autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
 
   " Similar format mappings
-  autocmd BufNewFile,BufRead *.json set ft=javascript
+  " autocmd BufNewFile,BufRead *.json set ft=javascript
   autocmd BufNewFile,BufRead .jshintrc set ft=javascript
   autocmd BufNewFile,BufRead *.rss setfiletype xml
   autocmd BufNewFile,BufRead *.blade setfiletype jade
