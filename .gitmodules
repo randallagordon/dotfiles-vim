@@ -205,3 +205,9 @@
 [submodule "bundle/elm.vim"]
 	path = bundle/elm.vim
 	url = https://github.com/lambdatoast/elm.vim.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = git@github.com:SirVer/ultisnips.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab.git
