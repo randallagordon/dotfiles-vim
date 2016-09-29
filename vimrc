@@ -101,6 +101,9 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.rss setfiletype xml
   autocmd BufNewFile,BufRead *.blade setfiletype jade
   autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+  " WTF Git? Text width stopped working from the default gitcommit package
+  au FileType gitcommit setlocal tw=72
 endif
 
 " Hex editing goodness
