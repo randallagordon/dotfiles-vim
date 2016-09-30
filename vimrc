@@ -356,3 +356,9 @@ nmap <silent> <leader>d <Plug>DashSearch
 " NERDCommenter Settings
 let NERDSpaceDelims=1 " Add spaces after `//` comments
 let NERDTreeWinSize = 50
+
+" Make YouCompleteMe & UltiSnips play nice using Supertab
+" http://0x3f.org/blog/make-youcompleteme-ultisnips-compatible/
+let g:ycm_key_list_select_completion = ['<C-Tab>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-S-Tab>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-Tab>'
