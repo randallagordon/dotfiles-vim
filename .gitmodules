@@ -207,3 +207,6 @@
 [submodule "bundle/YouCopmleteMe"]
 	path = bundle/YouCopmleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "bundle/vim-styled-components"]
+	path = bundle/vim-styled-components
+	url = https://github.com/fleischie/vim-styled-components.git

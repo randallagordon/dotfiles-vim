@@ -106,6 +106,9 @@ if has("autocmd")
   au FileType gitcommit setlocal tw=72
 endif
 
+" Let vim-jsx do its thing even with *.js files
+let g:jsx_ext_required = 0
+
 " Hex editing goodness
 if !exists(":DiffOrig")
   command Hex :%!xxd
@@ -351,7 +354,7 @@ nmap <leader>sx :exe "!provenance % " . line(".") . " " . col(".") . "\| dot -Tp
 map <leader>e :Errors<CR>
 
 " dash.vim
-nmap <silent> <leader>d <Plug>DashSearch
+"nmap <silent> <leader>d <Plug>DashSearch
 
 " NERDCommenter Settings
 let NERDSpaceDelims=1 " Add spaces after `//` comments
