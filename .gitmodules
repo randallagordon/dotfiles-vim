@@ -180,9 +180,6 @@
 [submodule "bundle/vim-localvimrc"]
 	path = bundle/vim-localvimrc
 	url = https://github.com/embear/vim-localvimrc.git
-[submodule "bundle/vim-angular"]
-	path = bundle/vim-angular
-	url = https://github.com/burnettk/vim-angular.git
 [submodule "bundle/dash.vim"]
 	path = bundle/dash.vim
 	url = https://github.com/rizzatti/dash.vim.git
