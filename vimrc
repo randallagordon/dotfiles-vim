@@ -1,6 +1,26 @@
 " Make Vim behave in a more useful way
 set nocompatible
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pathogen
+call pathogen#infect()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vnudle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle Plugins
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Wrap up Vundle setup
+call vundle#end()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline!
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 set rtp+=$HOME/src/powerline/powerline/bindings/vim/
@@ -9,10 +29,6 @@ set encoding=utf-8
 set noshowmode
 " Powerline GUI awesomeness, if a patched font is available
 set guifont=Consolas\ for\ Powerline\ FixedD:h9
-
-" Pathogen
-call pathogen#infect()
-
 
 " Now taken over by Powerline, but left for times when it isn't available
 " Status Line Left Side
