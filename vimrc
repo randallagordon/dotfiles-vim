@@ -42,7 +42,7 @@ set statusline+=%=
 set statusline+=ASCII\:\ %03.b
 set statusline+=\ %-16(\ %l,%c-%v\ %)%P
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color theme
 syntax on
 set hlsearch
@@ -59,6 +59,11 @@ highlight SpellCap term=reverse ctermfg=8 ctermbg=17 gui=undercurl guisp=#FF0000
 " Highlight word under cursor
 autocmd CursorMoved * exe printf('match Underlined /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
+" Width column highlight
+set colorcolumn=+1
+highlight ColorColumn ctermbg=234 guibg=#1c1c1c
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Get all sorts of fontacular across multiple platforms...
 if has("gui_running")
   if has("gui_gtk2")
@@ -69,6 +74,7 @@ if has("gui_running")
   endif
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General stuff
 set relativenumber
 set number " Vim 7.4 lets us have both! Woo!
@@ -85,6 +91,7 @@ set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*/node_modules/*,*.so,*.swp,*.zip
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mouse Stuff
 set mouse=a
 set ttymouse=xterm2
@@ -92,10 +99,12 @@ if has('mouse_sgr')
     set ttymouse=sgr
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Undo Stuff
 set cpoptions-=u
 set undofile
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype settings
 filetype off " Reset stuff for Pathogen
 filetype plugin indent on
@@ -123,15 +132,18 @@ if has("autocmd")
   au FileType gitcommit setlocal tw=72
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Let vim-jsx do its thing even with *.js files
 let g:jsx_ext_required = 0
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Hex editing goodness
 if !exists(":DiffOrig")
   command Hex :%!xxd
   command Unhex :%!xxd -r
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make screen/byobu happy
 set term=screen-256color " Fix redraw weirdness with background disappearing
 imap <Up> <ESC>kj
@@ -139,6 +151,7 @@ imap <Down> <ESC>ki
 imap <Right> <ESC>kl
 imap <Left> <ESC>kh
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Code folding goodies
 set fdc=2
 set fdm=syntax
@@ -154,6 +167,7 @@ let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=1      " XML
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " listchars setup, with toggle
 nmap <leader>c :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
@@ -161,6 +175,7 @@ highlight NonText guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 highlight SpecialKey guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 set list
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General Syntastic Settings
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -179,19 +194,23 @@ let g:syntastic_javascript_checkers = ['eslint']
 "let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'rubylint']
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Override settings for vim-autoformat
 let g:formatprg_args_javascript='%'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Store swap files in fixed location, not current directory.
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 set undodir^=~/.vimswap
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff current buffer against saved file
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
@@ -199,16 +218,15 @@ if !exists(":DiffOrig")
   map <leader>d :DiffOrig<CR>
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff open buffers
 map <leader>dt :windo diffthis<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source the vimrc file after saving it
 "autocmd BufWritePost vimrc source $MYVIMRC
 
-" Width column highlight
-set colorcolumn=+1
-highlight ColorColumn ctermbg=234 guibg=#1c1c1c
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-indent-guides config and colors
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
@@ -217,8 +235,8 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Super nifty mappings
-" ----------------------------------------------------------------------------
 
 " Save some damn time!
 inoremap jj <ESC>
@@ -264,9 +282,6 @@ nnoremap <silent><Leader>cln :let @*=expand('%').':'.line('.')<CR>
 " Yank to system pasteboard with <Leader>y
 noremap  <Leader>y  "*y
 nnoremap <Leader>yy "*yy
-
-" ragtag
-let g:ragtag_global_maps=1
 
 " Find word under cursor in files, recursing from current directory down
 map <leader>f :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
@@ -373,13 +388,24 @@ nmap <leader>sx :exe "!provenance % " . line(".") . " " . col(".") . "\| dot -Tp
 " Syntastic :Errors Mapping
 map <leader>e :Errors<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ragtag
+let g:ragtag_global_maps=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " dash.vim
 "nmap <silent> <leader>d <Plug>DashSearch
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDCommenter Settings
 let NERDSpaceDelims=1 " Add spaces after `//` comments
 let NERDTreeWinSize = 50
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make YouCompleteMe & UltiSnips play nice using Supertab
 " http://0x3f.org/blog/make-youcompleteme-ultisnips-compatible/
 
@@ -398,6 +424,7 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-multiple-cursors
 "let g:multi_cursor_use_default_mapping=0
 "let g:multi_cursor_next_key='<C-m>'
