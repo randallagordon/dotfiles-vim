@@ -67,6 +67,7 @@ set backspace=indent,eol,start
 set ttyfast
 set wildmenu
 set wildmode=longest:full,full
+set wildignore+=*/node_modules/*,*.so,*.swp,*.zip
 
 " Mouse Stuff
 set mouse=a
@@ -181,6 +182,9 @@ if !exists(":DiffOrig")
     \ | wincmd p | diffthis
   map <leader>d :DiffOrig<CR>
 endif
+
+" Diff open buffers
+map <leader>dt :windo diffthis<CR>
 
 " Source the vimrc file after saving it
 "autocmd BufWritePost vimrc source $MYVIMRC
@@ -362,6 +366,25 @@ let NERDTreeWinSize = 50
 
 " Make YouCompleteMe & UltiSnips play nice using Supertab
 " http://0x3f.org/blog/make-youcompleteme-ultisnips-compatible/
-let g:ycm_key_list_select_completion = ['<C-Tab>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-S-Tab>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-Tab>'
+
+" Default Config
+"let g:ycm_key_list_select_completion = ['<C-Tab>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-S-Tab>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-Tab>'
+
+" Make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" Better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" vim-multiple-cursors
+"let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_next_key='<C-m>'
+"let g:multi_cursor_prev_key='<C-p>'
+"let g:multi_cursor_skip_key='<C-x>'
+"let g:multi_cursor_quit_key='<Esc>'
