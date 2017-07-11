@@ -6,7 +6,7 @@ set nocompatible
 call pathogen#infect()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vnudle
+" Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
@@ -14,7 +14,7 @@ Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle Plugins
 
-
+Plugin 'Valloric/YouCompleteMe'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wrap up Vundle setup
