@@ -165,12 +165,13 @@ let php_folding=1             " PHP
 let ruby_fold=1               " Ruby
 let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
-let xml_syntax_folding=1      " XML
+" vim-jsx does weird things with this set
+"let xml_syntax_folding=1      " XML
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " listchars setup, with toggle
 nmap <leader>c :set list!<CR>
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,nbsp:␣
 highlight NonText guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 highlight SpecialKey guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 set list
@@ -305,6 +306,7 @@ map <leader>td <Plug>TaskList
 
 " NERD Tree Toggle
 nmap <silent> <c-n> :NERDTreeToggle<CR>
+nmap ,n :NERDTreeFind<CR>
 
 " Ctrl + R style search & replace of selection
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
@@ -431,3 +433,19 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "let g:multi_cursor_prev_key='<C-p>'
 "let g:multi_cursor_skip_key='<C-x>'
 "let g:multi_cursor_quit_key='<Esc>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-javascript
+set conceallevel=1
+hi clear Conceal
+hi Conceal ctermfg=81
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
