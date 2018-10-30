@@ -119,6 +119,7 @@ if has("autocmd")
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
 
   " Similar format mappings
@@ -212,16 +213,18 @@ set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 set undodir^=~/.vimswap
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Diff related mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff current buffer against saved file
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
     \ | wincmd p | diffthis
-  map <leader>d :DiffOrig<CR>
+  nmap <leader>d :DiffOrig<CR>
 endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff open buffers
-map <leader>dt :windo diffthis<CR>
+nmap <leader>dt :windo diffthis<CR>
+" Off
+nmap <leader>do :windo diffoff<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source the vimrc file after saving it
@@ -407,6 +410,11 @@ let g:ragtag_global_maps=1
 let NERDSpaceDelims=1 " Add spaces after `//` comments
 let NERDTreeWinSize = 50
 
+" YCM
+let g:ycm_autoclose_preview_window_after_insertion = 1
+"set ttimeoutlen=10 " Might help with motions/escaping not playing nice
+" http://www.polarhome.com/vim/manual/v57/options.html#'timeoutlen'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make YouCompleteMe & UltiSnips play nice using Supertab
 " http://0x3f.org/blog/make-youcompleteme-ultisnips-compatible/
@@ -448,4 +456,5 @@ let g:javascript_conceal_NaN                  = "ℕ"
 let g:javascript_conceal_prototype            = "¶"
 let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
-let g:javascript_conceal_arrow_function       = "⇒"
+" Obviated by Fira Code's ligatures:
+" let g:javascript_conceal_arrow_function       = "⇒"
