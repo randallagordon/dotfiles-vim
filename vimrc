@@ -13,8 +13,39 @@ Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle Plugins
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-coverage'
+Plugin 'google/vim-glaive'
+call glaive#Install()
 
+" Vim Extras
+Plugin 'qpkorr/vim-bufkill'
+
+" Possibly related to weirdness with completion? (jj not escaping):
+" https://github.com/Valloric/YouCompleteMe/pull/2657/files#diff-bfddd777a9469dbfe6722747c01caa39R35
 Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'Raimondi/delimitMate' " YCM has issues with vim-autoclose
+
+" So many tpope goodies!
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-dadbod'
+Plugin 'tpope/vim-dotenv'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-heroku'
+
+" Syntax
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+" Plugin 'neoclide/vim-jsx-improve'
+" Plugin 'mxw/vim-jsx'
+Plugin 'junegunn/rainbow_parentheses.vim'
+
+" Motions
+Plugin 'vim-scripts/vim_movement'
+Plugin 'tmhedberg/indent-motion'
+Plugin 'okcompute/vim-javascript-motions'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wrap up Vundle setup
