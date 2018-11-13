@@ -13,39 +13,101 @@ Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle Plugins
+
+" Color Schemes
+Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
+
 Plugin 'google/vim-maktaba'
-Plugin 'google/vim-coverage'
 Plugin 'google/vim-glaive'
 call glaive#Install()
+Plugin 'google/vim-coverage'
 
 " Vim Extras
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'suan/vim-instant-markdown' " Requires extra installation step: https://github.com/suan/vim-instant-markdown.git
+Plugin 'vim-scripts/TaskList.vim'
 Plugin 'qpkorr/vim-bufkill'
-
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'junegunn/rainbow_parentheses.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
 " Possibly related to weirdness with completion? (jj not escaping):
 " https://github.com/Valloric/YouCompleteMe/pull/2657/files#diff-bfddd777a9469dbfe6722747c01caa39R35
 Plugin 'Valloric/YouCompleteMe'
-
 Plugin 'Raimondi/delimitMate' " YCM has issues with vim-autoclose
-
-" So many tpope goodies!
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-dadbod'
-Plugin 'tpope/vim-dotenv'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-heroku'
-
-" Syntax
-Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
-" Plugin 'neoclide/vim-jsx-improve'
-" Plugin 'mxw/vim-jsx'
-Plugin 'junegunn/rainbow_parentheses.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'kshenoy/vim-signature' " Shows marks in guttter
+Plugin 'mhinz/vim-signify' " Shows git diff info in gutter
+Plugin 'kien/ctrlp.vim'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'milkypostman/vim-togglelist'
+Plugin 'rking/ag.vim'
+Plugin 'ap/vim-css-color'
+Plugin 'gregsexton/gitv'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'BenBergman/vsearch.vim'
+Plugin 'chrisbra/NrrwRgn'
+Plugin 'embear/vim-localvimrc'
+Plugin 'rizzatti/dash.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'adelarsq/vim-matchit'
 
 " Motions
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'bkad/CamelCaseMotion'
+Plugin 'vim-scripts/CountJump'
 Plugin 'vim-scripts/vim_movement'
 Plugin 'tmhedberg/indent-motion'
+
+" So many tpope goodies!
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-characterize'
+Plugin 'tpope/vim-dadbod'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-dotenv'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-heroku'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+
+" Language/Tooling Specific Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Elm
+" Plugin 'lambdatoast/elm.vim'
+
+" JavaScript/Node
+Plugin 'pangloss/vim-javascript'
+Plugin 'moll/vim-node'
 Plugin 'okcompute/vim-javascript-motions'
+
+" JSX
+" Plugin 'neoclide/vim-jsx-improve'
+Plugin 'mxw/vim-jsx'
+
+" Python
+" Plugin 'vim-scripts/pep8'
+" Plugin 'jmcomets/vim-pony'
+
+" Ruby/Rails
+" Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-rbenv'
+
+" TypeScript
+" Plugin 'leafgarland/typescript-vim'
+" Plugin 'peitalin/vim-jsx-typescript'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wrap up Vundle setup
@@ -282,10 +344,10 @@ noremap ;; ;
 " Make cursor stay put after yanking
 vmap y ygv<Esc>
 
-" Bubble single lines
+" Bubble single lines with vim-unimpaired
 nmap <leader>j ]e
 nmap <leader>k [e
-" Bubble multiple lines
+" Bubble multiple lines with vim-unimpaired
 vmap <leader>j ]egv
 vmap <leader>k [egv
 
