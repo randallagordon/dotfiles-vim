@@ -28,6 +28,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+" Plugin 'w0rp/ale' " Better than Syntastic?
 Plugin 'suan/vim-instant-markdown' " Requires extra installation step: https://github.com/suan/vim-instant-markdown.git
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'qpkorr/vim-bufkill'
@@ -41,7 +42,8 @@ Plugin 'Raimondi/delimitMate' " YCM has issues with vim-autoclose
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'kshenoy/vim-signature' " Shows marks in guttter
 Plugin 'mhinz/vim-signify' " Shows git diff info in gutter
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'wincent/command-t' " Better than ctrlp?
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'milkypostman/vim-togglelist'
 Plugin 'rking/ag.vim'
@@ -78,6 +80,7 @@ Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
@@ -92,6 +95,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
 Plugin 'okcompute/vim-javascript-motions'
+Plugin 'flowtype/vim-flow'
 
 " JSX
 " Plugin 'neoclide/vim-jsx-improve'
@@ -158,6 +162,11 @@ autocmd CursorMoved * exe printf('match Underlined /\V\<%s\>/', escape(expand('<
 set colorcolumn=+1
 highlight ColorColumn ctermbg=234 guibg=#1c1c1c
 
+" Print the color highlight groups under the cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+  \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+  \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Get all sorts of fontacular across multiple platforms...
 if has("gui_running")
@@ -213,6 +222,7 @@ if has("autocmd")
   autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType *.jsx setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType *.jsx let b:match_words='(:),\[:\],{:},<:>,<\@<=\([^/][^ \t>]*\)[^>]*\%(\%(=\|/\)\@<!>\|$\):<\@<=/\1>'
@@ -508,6 +518,7 @@ let NERDSpaceDelims=1 " Add spaces after `//` comments
 let NERDTreeWinSize = 50
 
 " YCM
+let g:ycm_filepath_blacklist = {} " Because we want JSX filepath completion
 let g:ycm_autoclose_preview_window_after_insertion = 1
 "set ttimeoutlen=10 " Might help with motions/escaping not playing nice
 " http://www.polarhome.com/vim/manual/v57/options.html#'timeoutlen'
@@ -555,3 +566,8 @@ let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
 " Obviated by Fira Code's ligatures:
 " let g:javascript_conceal_arrow_function       = "⇒"
+" Conceal semicolons—because, yuck!
+autocmd FileType javascript syntax match Normal ';' conceal cchar= 
+autocmd FileType Javascript syntax match jsNoise ';' conceal cchar= 
+autocmd FileType *.jsx syntax match Normal ';' conceal cchar= 
+autocmd FileType *.jsx syntax match jsNoise ';' conceal cchar= 
