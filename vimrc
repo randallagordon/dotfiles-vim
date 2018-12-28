@@ -42,8 +42,8 @@ Plugin 'Raimondi/delimitMate' " YCM has issues with vim-autoclose
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'kshenoy/vim-signature' " Shows marks in guttter
 Plugin 'mhinz/vim-signify' " Shows git diff info in gutter
-Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'wincent/command-t' " Better than ctrlp?
+" Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'wincent/command-t' " Faster than ctrlp!
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'milkypostman/vim-togglelist'
 Plugin 'rking/ag.vim'
@@ -304,10 +304,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'rubylint']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Override settings for vim-autoformat
-let g:formatprg_args_javascript='%'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When editing a file, always jump to the last known cursor position.
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -457,9 +453,6 @@ map <leader>s :call SpellcheckStrings()<CR>
 " Turn off spellcheck entirely
 map <leader><leader>s :set nospell<cr>
 
-" PEP8
-let g:pep8_map='<leader>8'
-
 " vim-rails mappings
 nmap <leader>r :Rake<CR>
 
@@ -571,3 +564,6 @@ autocmd FileType javascript syntax match Normal ';' conceal cchar=
 autocmd FileType Javascript syntax match jsNoise ';' conceal cchar= 
 autocmd FileType *.jsx syntax match Normal ';' conceal cchar= 
 autocmd FileType *.jsx syntax match jsNoise ';' conceal cchar= 
+
+" Moar better buffer deletion—keeps splits open
+command Bd bp\|bd \#
