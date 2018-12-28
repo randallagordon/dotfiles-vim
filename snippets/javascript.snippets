@@ -87,6 +87,10 @@ snippet cl
 snippet cd
 	console.dir(${1}, { depth: null, colors: true })
 snippet clv
-	console.log('${1} ', ${2})
+	console.log('${1}', $1)
+snippet clg
+	console.group()
+snippet clge
+	console.groupEnd()
 snippet esld
 	/* eslint-disable no-undef, space-before-function-paren */
