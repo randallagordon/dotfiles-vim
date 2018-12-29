@@ -2,10 +2,6 @@
 set nocompatible
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen
-call pathogen#infect()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -20,7 +16,6 @@ Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-glaive'
-call glaive#Install()
 Plugin 'google/vim-coverage'
 
 " Vim Extras
@@ -116,6 +111,7 @@ Plugin 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wrap up Vundle setup
 call vundle#end()
+call glaive#Install()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline!
