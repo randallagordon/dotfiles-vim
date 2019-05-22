@@ -29,7 +29,7 @@ Plugin 'vim-scripts/TaskList.vim'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'junegunn/rainbow_parentheses.vim'
-Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'nathanaelkane/vim-indent-guides' " Performance havoc?
 " Possibly related to weirdness with completion? (jj not escaping):
 " https://github.com/Valloric/YouCompleteMe/pull/2657/files#diff-bfddd777a9469dbfe6722747c01caa39R35
 Plugin 'Valloric/YouCompleteMe'
@@ -42,7 +42,7 @@ Plugin 'wincent/command-t' " Faster than ctrlp!
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'milkypostman/vim-togglelist'
 Plugin 'rking/ag.vim'
-Plugin 'ap/vim-css-color'
+Plugin 'ap/vim-css-color' " Performance havoc?
 Plugin 'gregsexton/gitv'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'BenBergman/vsearch.vim'
@@ -51,9 +51,17 @@ Plugin 'embear/vim-localvimrc'
 Plugin 'rizzatti/dash.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'adelarsq/vim-matchit'
+" Plugin 'vim-scripts/gitignore' " Sets `wildignore` based off .gitignore
+" Plugin 'zdwolfe/vim-gitwildignore' " Sets `wildignore` based off .gitignore
+" Works but doesn't know about worktrees:
+" Plugin 'euclio/gitignore.vim' " Sets `wildignore` based off .gitignore, but
+" uses Python2
+Plugin 'junegunn/limelight.vim'
+Plugin 'metakirby5/codi.vim'
+Plugin 'mileszs/ack.vim'
 
 " Motions
-Plugin 'Lokaltog/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'bkad/CamelCaseMotion'
 Plugin 'vim-scripts/CountJump'
 Plugin 'vim-scripts/vim_movement'
@@ -79,6 +87,7 @@ Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-vinegar'
 
 " Language/Tooling Specific Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -86,11 +95,17 @@ Plugin 'tpope/vim-unimpaired'
 " Elm
 " Plugin 'lambdatoast/elm.vim'
 
-" JavaScript/Node
+" JavaScript/Node/TypeScript
 Plugin 'pangloss/vim-javascript'
 Plugin 'moll/vim-node'
 Plugin 'okcompute/vim-javascript-motions'
-Plugin 'flowtype/vim-flow'
+Plugin 'jason0x43/vim-js-indent'
+" Plugin 'flowtype/vim-flow'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'Shougo/vimproc.vim' " Required for 'Quramy/tsuquyomi'...or not with Vim8?
+Plugin 'Quramy/tsuquyomi'
+
 
 " JSX
 " Plugin 'neoclide/vim-jsx-improve'
@@ -104,9 +119,8 @@ Plugin 'mxw/vim-jsx'
 " Plugin 'tpope/vim-rails'
 " Plugin 'tpope/vim-rbenv'
 
-" TypeScript
-" Plugin 'leafgarland/typescript-vim'
-" Plugin 'peitalin/vim-jsx-typescript'
+" Terraform
+Plugin 'hashivim/vim-terraform'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Wrap up Vundle setup
@@ -176,8 +190,6 @@ endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General stuff
-set relativenumber
-set number " Vim 7.4 lets us have both! Woo!
 set tabstop=2
 set shiftwidth=2
 set smarttab
@@ -190,6 +202,28 @@ set ttyfast
 set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*/node_modules/*,*.so,*.swp,*.zip
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Relative line numbers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set relativenumber
+set number " Vim 7.4 lets us have both! Woo!
+
+" Auto toggle relative off when switching buffers
+augroup vimrc_set_relativenumber_only_active_window
+  autocmd!
+  autocmd VimEnter,BufWinEnter,WinEnter * setlocal relativenumber
+  autocmd WinLeave * setlocal norelativenumber
+augroup END
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Moar speed with cursorline only on in current buffer?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" augroup vimrc_set_cursorline_only_active_window
+  " autocmd!
+  " autocmd VimEnter,BufWinEnter,WinEnter * setlocal cursorline
+  " autocmd WinLeave * setlocal nocursorline
+" augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mouse Stuff
@@ -224,13 +258,14 @@ if has("autocmd")
   autocmd FileType *.jsx let b:match_words='(:),\[:\],{:},<:>,<\@<=\([^/][^ \t>]*\)[^>]*\%(\%(=\|/\)\@<!>\|$\):<\@<=/\1>'
   autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType terraform setlocal ts=2 sts=2 sw=2 expandtab
 
   " Similar format mappings
   " autocmd BufNewFile,BufRead *.json set ft=javascript
   autocmd BufNewFile,BufRead .jshintrc set ft=javascript
   autocmd BufNewFile,BufRead *.rss setfiletype xml
   autocmd BufNewFile,BufRead *.blade setfiletype jade
-  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+  autocmd BufNewFile,BufReadPost *.md set filetype=markdown tw=80
 
   " WTF Git? Text width stopped working from the default gitcommit package
   au FileType gitcommit setlocal tw=72
@@ -279,25 +314,6 @@ set listchars=tab:▸\ ,eol:¬,nbsp:␣
 highlight NonText guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 highlight SpecialKey guifg=#4a4a59 ctermfg=236 ctermbg=NONE
 set list
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General Syntastic Settings
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Show ALL errors, crucial for scss-lint
-let g:syntastic_aggregate_errors = 1
-
-" Better symbols for Syntastic
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '!'
-
-" Default Syntastic Checkers
-"let g:syntastic_javascript_checkers = ['standard']
-let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_ruby_checkers = ['rubocop', 'mri', 'rubylint']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When editing a file, always jump to the last known cursor position.
@@ -507,6 +523,7 @@ let NERDSpaceDelims=1 " Add spaces after `//` comments
 let NERDTreeWinSize = 50
 
 " YCM
+let g:ycm_complete_in_comments = 1 " Because type completions in Flow comments
 let g:ycm_filepath_blacklist = {} " Because we want JSX filepath completion
 let g:ycm_autoclose_preview_window_after_insertion = 1
 "set ttimeoutlen=10 " Might help with motions/escaping not playing nice
@@ -542,6 +559,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-javascript
 set conceallevel=1
+autocmd FileType json set conceallevel=0 " But not for JSON, need to see quotes
 hi clear Conceal
 hi Conceal ctermfg=81
 let g:javascript_conceal_function             = "ƒ"
@@ -557,9 +575,23 @@ let g:javascript_conceal_super                = "Ω"
 " let g:javascript_conceal_arrow_function       = "⇒"
 " Conceal semicolons—because, yuck!
 autocmd FileType javascript syntax match Normal ';' conceal cchar= 
-autocmd FileType Javascript syntax match jsNoise ';' conceal cchar= 
+autocmd FileType javascript syntax match jsNoise ';' conceal cchar= 
 autocmd FileType *.jsx syntax match Normal ';' conceal cchar= 
 autocmd FileType *.jsx syntax match jsNoise ';' conceal cchar= 
+autocmd FileType typescript syntax match Normal ';' conceal cchar= 
+autocmd FileType typescript syntax match jsNoise ';' conceal cchar= 
 
 " Moar better buffer deletion—keeps splits open
 command Bd bp\|bd \#
+
+" Bash-esque command mode motions
+" Requires iTerm 2 to have a mapping set to `Meta` (vs. Esc+)
+" I generally use right alt as Meta and right Command remapped to left alt/Esc+
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>

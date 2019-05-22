@@ -9,5 +9,5 @@ let g:formatters_jsx = ['prettier']
 " Autoformat on write
 au BufWrite * :Autoformat
 
-autocmd FileType vim,tf let b:autoformat_autoindent=0
+autocmd FileType terraform,vim,yaml,zsh let b:autoformat_autoindent=0
 autocmd FileType vim let g:autoformat_remove_trailing_spaces = 0
