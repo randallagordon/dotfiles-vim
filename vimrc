@@ -129,9 +129,9 @@ call glaive#Install()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline!
+set rtp+=$HOME/src/powerline/powerline/bindings/vim/
 set rtp+=$HOME/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim/
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set rtp+=$HOME/src/powerline/powerline/bindings/vim/
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 set encoding=utf-8
@@ -262,6 +262,7 @@ if has("autocmd")
 
   " Similar format mappings
   " autocmd BufNewFile,BufRead *.json set ft=javascript
+  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
   autocmd BufNewFile,BufRead .jshintrc set ft=javascript
   autocmd BufNewFile,BufRead *.rss setfiletype xml
   autocmd BufNewFile,BufRead *.blade setfiletype jade
@@ -533,6 +534,8 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 " Make YouCompleteMe & UltiSnips play nice using Supertab
 " http://0x3f.org/blog/make-youcompleteme-ultisnips-compatible/
 
+" 2019-05-23: YCM now has `g:ycm_use_ultisnips_completer`, is this necessary?
+
 " Default Config
 "let g:ycm_key_list_select_completion = ['<C-Tab>', '<Down>']
 "let g:ycm_key_list_previous_completion = ['<C-S-Tab>', '<Up>']
@@ -571,6 +574,8 @@ let g:javascript_conceal_NaN                  = "ℕ"
 let g:javascript_conceal_prototype            = "¶"
 let g:javascript_conceal_static               = "•"
 let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_noarg_arrow_function = "□"
+let g:javascript_conceal_underscore_arrow_function = "□"
 " Obviated by Fira Code's ligatures:
 " let g:javascript_conceal_arrow_function       = "⇒"
 " Conceal semicolons—because, yuck!
